@@ -36,14 +36,20 @@ public class SecondActivity extends BBaseActivity {
     }
 
     @Override
-    protected void onServiceEvent(BEvent event) {
-        // XXX: ログ出力だけ仮実装
+    protected void onBServiceConnected() {
+        BLog.d(TAG, "onBServiceConnected");
+        // TODO: ここにBServiceと初回接続時の処理を実装する。
+    }
+
+    @Override
+    protected void onBServiceEvent(BEvent event) {
         if (event != null) {
             BLog.d(TAG, "onEvent(kind=" + event.getKind() + " code=" + event.getCode() + ")");
         } else {
             BLog.d(TAG, "onEvent(event=null)");
             return;
         }
+        // TODO: ここにイベントcallback時の処理を実装する。
     }
 
     private void init() {

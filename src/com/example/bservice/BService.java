@@ -16,7 +16,7 @@ import com.example.bservice.event.BEvent;
 public class BService extends Service {
     private static String TAG = BService.class.getSimpleName();
 
-    private static final String PREFIX_ACTION = "com.exapmle.bservice.action.";
+    private static final String PREFIX_ACTION = BService.class.getPackage().getName() + ".action.";
     private static final String ACTION_START = PREFIX_ACTION + "START";
     private static final String ACTION_STOP = PREFIX_ACTION + "STOP";
 

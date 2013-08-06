@@ -18,6 +18,8 @@ import com.example.bservice.event.BEvent;
  */
 public abstract class BBaseActivity extends Activity {
     private static final String TAG = BBaseActivity.class.getSimpleName();
+    private static final ComponentName BSERVICE_COMPONENT_NAME = new ComponentName(BService.class
+            .getPackage().getName(), BService.class.getName());
 
     /** BService IF instance */
     private BServiceIF mBServiceIF;
@@ -26,8 +28,13 @@ public abstract class BBaseActivity extends Activity {
     private final ServiceConnection mBServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            mBServiceIF = BServiceIF.Stub.asInterface(service);
-            registerBServiceListener();
+            BLog.d(TAG, "onServiceConnected(name=" + name);
+
+            if (BSERVICE_COMPONENT_NAME.equals(name)) {
+                mBServiceIF = BServiceIF.Stub.asInterface(service);
+                registerBServiceListener();
+                onBServiceConnected();
+            }
         }
 
         @Override
@@ -39,7 +46,7 @@ public abstract class BBaseActivity extends Activity {
     private final BServiceListener mBServiceListener = new BServiceListener.Stub() {
         @Override
         public void onEvent(BEvent event) {
-            onServiceEvent(event);
+            onBServiceEvent(event);
         }
     };
 
@@ -76,11 +83,18 @@ public abstract class BBaseActivity extends Activity {
     }
 
     /**
+     * BService初回接続時
+     *
+     * @param event
+     */
+    abstract protected void onBServiceConnected();
+
+    /**
      * BServiceからのイベントコールバック
      *
      * @param event
      */
-    abstract protected void onServiceEvent(BEvent event);
+    abstract protected void onBServiceEvent(BEvent event);
 
     /** send Event if IF is available */
     protected void sendEvent(BEvent event) {
