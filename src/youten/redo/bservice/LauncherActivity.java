@@ -1,6 +1,8 @@
 
-package com.example.bservice;
+package youten.redo.bservice;
 
+import youten.redo.bservice.debug.BLog;
+import youten.redo.bservice.event.BEvent;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -11,12 +13,6 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.view.View;
 import android.view.View.OnClickListener;
-
-import com.example.bservice.BServiceIF;
-import com.example.bservice.BServiceListener;
-import com.example.bservice.R;
-import com.example.bservice.debug.BLog;
-import com.example.bservice.event.BEvent;
 
 /**
  * BServiceとのコネクションをActivityに直接実装したケース
@@ -43,13 +39,15 @@ public class LauncherActivity extends Activity {
     /** Background Service Event Listener */
     private final BServiceListener mBServiceListener = new BServiceListener.Stub() {
         @Override
-        public void onEvent(BEvent event) throws RemoteException {
+        public boolean onEvent(BEvent event) throws RemoteException {
             if (event != null) {
                 BLog.d(TAG, "onEvent(kind=" + event.getKind() + " code=" + event.getCode() + ")");
             } else {
                 BLog.d(TAG, "onEvent(event=null)");
-                return;
+                return false;
             }
+            
+            return true;
         }
     };
 

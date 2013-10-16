@@ -1,12 +1,12 @@
 
-package com.example.bservice;
+package youten.redo.bservice;
 
+import youten.redo.bservice.debug.BLog;
+import youten.redo.bservice.event.BEvent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.example.bservice.debug.BLog;
-import com.example.bservice.event.BEvent;
 
 /**
  * BServiceとのコネクションを基底Classに実装したケース
@@ -42,14 +42,15 @@ public class SecondActivity extends BBaseActivity {
     }
 
     @Override
-    protected void onBServiceEvent(BEvent event) {
+    protected boolean onBServiceEvent(BEvent event) {
         if (event != null) {
             BLog.d(TAG, "onEvent(kind=" + event.getKind() + " code=" + event.getCode() + ")");
         } else {
             BLog.d(TAG, "onEvent(event=null)");
-            return;
+            return false;
         }
         // TODO: ここにイベントcallback時の処理を実装する。
+        return true;
     }
 
     private void init() {

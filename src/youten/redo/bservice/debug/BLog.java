@@ -1,5 +1,5 @@
 
-package com.example.bservice.debug;
+package youten.redo.bservice.debug;
 
 import android.util.Log;
 

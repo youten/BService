@@ -1,6 +1,8 @@
 
-package com.example.bservice;
+package youten.redo.bservice;
 
+import youten.redo.bservice.debug.BLog;
+import youten.redo.bservice.event.BEvent;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -9,9 +11,6 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
-
-import com.example.bservice.debug.BLog;
-import com.example.bservice.event.BEvent;
 
 /**
  * Background Serviceとの接続をよしなにやってくれる規定クラス
@@ -45,8 +44,8 @@ public abstract class BBaseActivity extends Activity {
     /** Background Service Event Listener */
     private final BServiceListener mBServiceListener = new BServiceListener.Stub() {
         @Override
-        public void onEvent(BEvent event) {
-            onBServiceEvent(event);
+        public boolean onEvent(BEvent event) {
+            return onBServiceEvent(event);
         }
     };
 
@@ -94,7 +93,9 @@ public abstract class BBaseActivity extends Activity {
      *
      * @param event
      */
-    abstract protected void onBServiceEvent(BEvent event);
+    protected boolean onBServiceEvent(BEvent event) {
+        return false;
+    }
 
     /** send Event if IF is available */
     protected void sendEvent(BEvent event) {

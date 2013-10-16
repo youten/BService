@@ -1,14 +1,13 @@
 
-package com.example.bservice;
+package youten.redo.bservice;
 
+import youten.redo.bservice.debug.BLog;
+import youten.redo.bservice.event.BEvent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
-
-import com.example.bservice.debug.BLog;
-import com.example.bservice.event.BEvent;
 
 /**
  * よくあるBackground Service
@@ -123,7 +122,11 @@ public class BService extends Service {
                 if (listeners > 0) {
                     for (int i = 0; i < listeners; i++) {
                         try {
-                            callbackList.getBroadcastItem(i).onEvent(mEvent);
+                            if (callbackList.getBroadcastItem(i).onEvent(mEvent)) {
+                                // consumed
+                            } else {
+                                // not cosumed
+                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

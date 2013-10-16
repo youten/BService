@@ -1,5 +1,5 @@
 
-package com.example.bservice.event;
+package youten.redo.bservice.event;
 
 import android.os.Parcel;
 import android.os.Parcelable;

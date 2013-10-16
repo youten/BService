@@ -1,7 +1,7 @@
-package com.example.bservice;
+package youten.redo.bservice;
 
-import com.example.bservice.BServiceListener;
-import com.example.bservice.event.BEvent;
+import youten.redo.bservice.BServiceListener;
+import youten.redo.bservice.event.BEvent;
 
 oneway interface BServiceIF {
     void registerListener(in BServiceListener listener);
