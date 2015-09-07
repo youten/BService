@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="youten.redo.bservice"
+    android:versionCode="2"
+    android:versionName="1.1" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="youten.redo.bservice.LauncherActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="youten.redo.bservice.SecondActivity"
+            android:label="@string/app_name" />
+
+        <service
+            android:name="youten.redo.bservice.BService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="youten.redo.bservice.BServiceIF" />
+                <action android:name="youten.redo.bservice.action.START" />
+                <action android:name="youten.redo.bservice.action.STOP" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/7A3351129A/AndroidStudioProjects/BService/app/src/main/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="activity_margin">12dp</dimen>
+    <!-- From: file:/Users/7A3351129A/AndroidStudioProjects/BService/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="activity_launcher">Launcher Activity</string>
+    <string name="activity_second">Second Activity</string>
+    <string name="app_name">BService</string>
+    <string name="text_senddummyevent">Send Dummy Event</string>
+    <string name="text_start_secondactivity">Start SecondActivity</string>
+    <!-- From: file:/Users/7A3351129A/AndroidStudioProjects/BService/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+</resources>

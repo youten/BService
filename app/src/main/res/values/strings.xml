@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BService</string>
+    <string name="text_senddummyevent">Send Dummy Event</string>
+
+    <!-- Launcher Activity -->
+    <string name="activity_launcher">Launcher Activity</string>
+    <string name="text_start_secondactivity">Start SecondActivity</string>
+
+    <!-- Second Activity -->
+    <string name="activity_second">Second Activity</string>
+
+</resources>
